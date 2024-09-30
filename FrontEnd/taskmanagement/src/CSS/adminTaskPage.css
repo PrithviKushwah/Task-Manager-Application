@@ -1,0 +1,171 @@
+/* Container styling */
+.admin-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+  }
+  
+  /* Page title */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Logout button */
+  button.logout {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  button.logout:hover {
+    background-color: #ff3333;
+  }
+  
+  /* Insert Task Form */
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  form input, form textarea, form select {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  form button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 40%;
+  }
+  
+  .backButton {
+    left: 15px;
+    max-width: max-content;
+    position: fixed;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 40%;
+}
+  form button:hover {
+    background-color: #218838;
+  }
+  
+  /* Task List */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  li h4 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  li p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  li button {
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  li button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Delete button */
+  li button:first-child {
+    background-color: #ff4d4d;
+  }
+  
+  li button:first-child:hover {
+    background-color: #ff3333;
+  }
+  
+  /* Update button */
+  li a button {
+    background-color: #ffc107;
+  }
+  
+  li a button:hover {
+    background-color: #e0a800;
+  }
+   .main{
+    display: flex;
+   }
+   .download-report {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .download-report:hover {
+    background-color: #45a049;
+  }
+  .task-list{
+    margin: 5%;
+    width: 50%;
+  }
