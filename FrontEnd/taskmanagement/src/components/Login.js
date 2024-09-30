@@ -38,31 +38,46 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        <div className="register-link">
-          <Link to='/register'>Don't have an account? Register</Link>
-        </div>
-      </form>
+      <div style={{marginRight: '5%'}} className="login-form-section">
+        <form className="login-form" onSubmit={handleLogin}>
+          <h2>Login</h2>
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+          <div className="register-link">
+            <Link to='/register'>Don't have an account? Register</Link>
+          </div>
+        </form>
+      </div>
+
+      <div className="benefits-section">
+        <h3>Welcome to Task Management</h3>
+        <p>Our application helps you to:</p>
+        <ul>
+          <li>Efficiently manage and assign tasks</li>
+          <li>Track task progress and completion status</li>
+          <li>Set priorities and deadlines to ensure timely delivery</li>
+          <li>Collaborate seamlessly with your team</li>
+          <li>Receive updates on tasks assigned to you</li>
+        </ul>
+        <p>Whether you're an admin or a user, login now to streamline your work and stay organized!</p>
+      </div>
     </div>
   );
 };
