@@ -24,13 +24,13 @@ const UpdateTaskPage = () => {
     const fetchTaskAndUsers = async () => {
       try {
         // Fetch task details
-        const taskResponse = await axios.get(`http://localhost:5000/api/tasks/${id}`, {
+        const taskResponse = await axios.get(`https://task-manager-application-1tfu.onrender.com/api/tasks/${id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setTask(taskResponse.data);
 
         // Fetch users for the assigned user dropdown
-        const userResponse = await axios.get('http://localhost:5000/api/auth/allusers', {
+        const userResponse = await axios.get('https://task-manager-application-1tfu.onrender.com/api/auth/allusers', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setUsers(userResponse.data);
@@ -50,7 +50,7 @@ const UpdateTaskPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/tasks/${id}`, task, {
+      await axios.put(`https://task-manager-application-1tfu.onrender.com/api/tasks/${id}`, task, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       navigate('/admin/tasks'); // Redirect to the task list after successful update

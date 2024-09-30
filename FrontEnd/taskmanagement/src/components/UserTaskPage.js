@@ -32,7 +32,7 @@ const UserTaskPage = () => {
 
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/tasks/me', {
+        const response = await axios.get('https://task-manager-application-1tfu.onrender.com/api/tasks/me', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTasks(response.data);
@@ -65,7 +65,7 @@ const UserTaskPage = () => {
     try {
       // Assign task to the logged-in user
       const response = await axios.post(
-        'http://localhost:5000/api/tasks',
+        'https://task-manager-application-1tfu.onrender.com/api/tasks',
         { ...newTask, assignedUser: userId }, // Set the assignedUser as the logged-in user
         {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
@@ -80,7 +80,7 @@ const UserTaskPage = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+      await axios.delete(`https://task-manager-application-1tfu.onrender.com/api/tasks/${taskId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks(tasks.filter((task) => task._id !== taskId));

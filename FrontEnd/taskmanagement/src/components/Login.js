@@ -6,13 +6,17 @@ import '../CSS/login.css'; // Import the CSS file
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); // Error state to store error message
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    setError(''); // Clear any previous error message
+    
+    if(!email) setError('Enter Email !');
+    if(!password) setError('Enter Password!');
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('https://task-manager-application-1tfu.onrender.com/api/auth/login', {
         email,
         password,
       }, {
@@ -29,18 +33,18 @@ const Login = () => {
       } else {
         navigate('/user/tasks');
       }
-
     } catch (error) {
       console.error('Login failed:', error);
-      alert('Invalid credentials or server error');
+      setError('Invalid credentials or server error. Please try again.'); // Set error message
     }
   };
 
   return (
     <div className="login-container">
-      <div style={{marginRight: '5%'}} className="login-form-section">
+      <div style={{ marginRight: '5%' }} className="login-form-section">
         <form className="login-form" onSubmit={handleLogin}>
           <h2>Login</h2>
+          {error && <p style={{color:"red"}} className="error-message">{error}</p>} 
           <div>
             <label>Email:</label>
             <input

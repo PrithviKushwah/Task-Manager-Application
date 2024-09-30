@@ -8,32 +8,34 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('user'); // Default role
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post('https://task-manager-application-1tfu.onrender.com/api/auth/register', {
         email,
         password,
         role,
       });
 
       if (response.status === 400) {
-        alert('User already exists');
+        setError('User already exists');
       } else {
         localStorage.setItem('token', response.data.token);
         navigate('/');
       }
     } catch (error) {
       console.error(error.response.data);
-      alert('Error: ' + error.response.data.msg);
-    }
+      setError('Server error. Please try again.'); 
+       }
   };
 
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Register</h2>
+        {error && <p style={{color:"red"}} className="error-message">{error}</p>} 
         <div>
           <label>Email:</label>
           <input

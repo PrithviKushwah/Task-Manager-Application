@@ -22,7 +22,7 @@ const AdminTaskPage = () => {
     }
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/tasks', {
+        const response = await axios.get('https://task-manager-application-1tfu.onrender.com/api/tasks', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setTasks(response.data);
@@ -33,7 +33,7 @@ const AdminTaskPage = () => {
 
     const fetchUsers = async () => {
       try {
-        const userResponse = await axios.get('http://localhost:5000/api/auth/allusers', {
+        const userResponse = await axios.get('https://task-manager-application-1tfu.onrender.com/api/auth/allusers', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setUsers(userResponse.data);
@@ -48,7 +48,7 @@ const AdminTaskPage = () => {
 
   const handleDelete = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+      await axios.delete(`https://task-manager-application-1tfu.onrender.com/api/tasks/${taskId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks(tasks.filter(task => task._id !== taskId));
@@ -59,7 +59,7 @@ const AdminTaskPage = () => {
 
   const handleDownloadReport = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/auth/tasks/report', {
+      const response = await axios.get('https://task-manager-application-1tfu.onrender.com/api/auth/tasks/report', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         responseType: 'blob',
       });
@@ -88,7 +88,7 @@ const AdminTaskPage = () => {
   const handleInsertTask = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/tasks', newTask, {
+      const response = await axios.post('https://task-manager-application-1tfu.onrender.com/api/tasks', newTask, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks([...tasks, response.data]); 
