@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const express = require('express');
 const router = express.Router();
@@ -17,20 +17,20 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ msg: 'User already exists' });
     }
 
-    
+    // Hash the password before saving the user
     const hashedPassword = await bcrypt.hash(password, 10);
 
     user = new User({
       email,
-      password: hashedPassword, 
-      role, 
+      password: hashedPassword, // Store the hashed password
+      role, // Assign role when creating a new user
     });
 
     await user.save();
 
     const payload = {
       id: user._id,
-      role: user.role, 
+      role: user.role, // Include role in JWT payload
     };
 
     const token = jwt.sign(payload, 'Secret', { expiresIn: '1h' });
@@ -45,7 +45,6 @@ router.post('/register', async (req, res) => {
 
 // Login route
 router.post('/login', async (req, res) => {
-  console.log("login");
   const { email, password } = req.body;
 
   try {
@@ -55,14 +54,15 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
     
-    bcrypt.compare(password, user.password, function(err, result) {
-      if(result==false) return res.status(400).json({ msg: 'Invalid credentials' });
-  });
-  
+    const isMatch = bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      console.log(user);
+      return res.status(400).json({ msg: 'Invalid credentials' });
+    }
 
     const payload = {
       id: user._id,
-      role: user.role, 
+      role: user.role, // Include role in JWT payload
     };
 
     const token = jwt.sign(payload,'Secret', { expiresIn: '1h' });
